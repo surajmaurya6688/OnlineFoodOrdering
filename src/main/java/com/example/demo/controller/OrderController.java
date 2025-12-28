@@ -67,9 +67,6 @@ public class OrderController {
     public List<Order> getOrders() {
         return orderService.getAllOrders();
     }
-    @GetMapping("/")
-    public String home (){
-        return "index";
-    }
+    
 }
 
