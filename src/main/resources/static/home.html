@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant List</title>
+    <style>
+        body {
+            background: #f8fafc;
+            font-family: Arial;
+        }
+        h2 { text-align:center; margin-top:20px; }
+
+        .card {
+            width: 300px;
+            padding: 15px;
+            margin: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            float: left;
+        }
+        .btn {
+            background: #3b82f6;
+            color:white;
+            padding:8px 12px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Restaurants</h2>
+
+<div id="restaurantList"></div>
+
+<script>
+fetch("http://localhost:9090/api/restaurants")
+    .then(res => res.json())
+    .then(list => {
+        let html = "";
+        list.forEach(r => {
+            html += `
+                <div class="card">
+                    <h3>${r.name}</h3>
+                    <p>Location: ${r.location}</p>
+                    <button class="btn">View Menu</button>
+                </div>
+            `;
+        });
+        document.getElementById("restaurantList").innerHTML = html;
+    });
+</script>
+
+</body>
+</html>
