@@ -1,6 +1,13 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.MenuItem;
 import com.example.demo.entity.Order;
@@ -8,9 +15,6 @@ import com.example.demo.entity.Restaurant;
 import com.example.demo.repository.MenuItemRepository;
 import com.example.demo.repository.RestaurentRepository;
 import com.example.demo.service.OrderService;
-
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -62,6 +66,10 @@ public class OrderController {
     @GetMapping("/orders")
     public List<Order> getOrders() {
         return orderService.getAllOrders();
+    }
+    @GetMapping("/")
+    public String home (){
+        return "index";
     }
 }
 
